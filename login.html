@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f5f2e9" />
+  <meta name="description" content="Access your LEWEZZI fashion discovery account." />
+  <title>Log in — LEWEZZI</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2218%22 fill=%22%2317372d%22/%3E%3Ccircle cx=%2232%22 cy=%2232%22 r=%2222%22 fill=%22none%22 stroke=%22%23d5bf89%22 stroke-width=%221.5%22/%3E%3Ctext x=%2232%22 y=%2243%22 font-family=%22Georgia%2Cserif%22 font-size=%2239%22 fill=%22%23fffdf7%22 text-anchor=%22middle%22%3EL%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --paper: #f5f2e9; --white: #fffdf7; --ink: #1f332b; --muted: #6c766d;
+      --line: #e3ddcf; --accent: #b79b62; --accent-dark: #806b3f;
+      --shadow: 0 20px 60px rgba(25,45,36,.12); --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Manrope', Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { min-height: 100%; }
+    body { margin: 0; min-height: 100vh; color: var(--ink); background: var(--paper); font-family: var(--sans); line-height: 1.55; background-image: radial-gradient(ellipse at 10% 15%, rgba(183,155,98,.09), transparent 28%), radial-gradient(ellipse at 95% 82%, rgba(39,78,58,.055), transparent 30%); }
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    .announcement { min-height: 32px; padding: 7px 16px; background: #17372d; color: #f5f0e4; text-align: center; font-size: 10px; letter-spacing: .15em; text-transform: uppercase; }
+    .announcement span { color: #d8c28e; }
+    .auth-header { position: relative; z-index: 3; background: rgba(245,242,233,.9); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(31,51,43,.1); }
+    .auth-nav { max-width: 1240px; min-height: 78px; padding: 0 28px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+    .brand-logo { display: inline-flex; align-items: center; gap: 10px; }
+    .logo-symbol { width: 38px; height: 38px; border: 1px solid var(--accent); display: grid; place-items: center; border-radius: 50%; font-family: var(--serif); font-size: 23px; line-height: 1; box-shadow: inset 0 0 0 3px rgba(183,155,98,.09); }
+    .logo-word { display: block; font-family: var(--serif); font-size: 31px; font-weight: 600; letter-spacing: -.025em; line-height: .95; }
+    .logo-sub { display: block; margin-top: 5px; font-size: 8px; color: var(--muted); letter-spacing: .17em; text-transform: uppercase; }
+    .header-actions { display: flex; align-items: center; gap: 18px; font-size: 11px; font-weight: 700; }
+    .header-actions a:not(.header-cta):hover { color: var(--accent-dark); }
+    .header-cta { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: 0 15px; color: var(--white); background: var(--ink); border: 1px solid var(--ink); border-radius: 3px; transition: transform .2s, background .2s; }
+    .header-cta:hover { background: #35483e; transform: translateY(-1px); }
+    .auth-main { max-width: 1160px; margin: 0 auto; padding: 44px 28px 56px; }
+    .auth-layout { display: grid; grid-template-columns: minmax(0,1.02fr) minmax(360px,.88fr); min-height: 620px; background: rgba(255,253,247,.72); border: 1px solid rgba(227,221,207,.95); box-shadow: var(--shadow); overflow: hidden; }
+    .auth-visual { position: relative; min-height: 600px; background: #d8d5c8; overflow: hidden; isolation: isolate; }
+    .auth-visual img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; z-index: -2; animation: imageDrift 20s ease-in-out infinite alternate; }
+    .auth-visual::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg, rgba(18,39,29,.78), rgba(18,39,29,.07) 78%), linear-gradient(90deg, rgba(18,39,29,.12), transparent 70%); }
+    .visual-copy { position: absolute; left: clamp(24px,4vw,48px); right: 24px; bottom: 40px; color: #fffdf7; max-width: 430px; }
+    .visual-eyebrow { font-size: 9px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: #e3cf9d; }
+    .visual-copy h2 { margin: 12px 0; font-family: var(--serif); font-size: clamp(37px,4.2vw,55px); line-height: .99; font-weight: 500; letter-spacing: -.02em; }
+    .visual-copy p { max-width: 360px; margin: 0; color: rgba(255,253,247,.86); font-size: 12px; line-height: 1.85; }
+    .visual-stamp { position: absolute; top: 24px; left: 24px; width: 82px; height: 82px; border: 1px solid rgba(255,253,247,.66); outline: 1px solid rgba(255,253,247,.28); outline-offset: 5px; border-radius: 50%; display: grid; place-items: center; text-align: center; color: #fffdf7; font-family: var(--serif); font-size: 17px; line-height: 1; }
+    .auth-panel { align-self: center; padding: clamp(28px,4.2vw,54px); }
+    .auth-kicker { display: inline-flex; align-items: center; gap: 9px; color: var(--accent-dark); font-size: 9px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
+    .auth-kicker::before { content: ''; width: 23px; height: 1px; background: var(--accent); }
+    .auth-panel h1 { margin: 13px 0 7px; font-family: var(--serif); font-size: clamp(40px,4.3vw,51px); line-height: 1; font-weight: 500; letter-spacing: -.025em; }
+    .auth-intro { margin: 0 0 27px; color: var(--muted); font-size: 12px; line-height: 1.8; }
+    .auth-form { display: grid; gap: 15px; }
+    .field { display: grid; gap: 7px; }
+    .field label { font-size: 10px; font-weight: 800; color: #424c43; letter-spacing: .04em; }
+    .field input { width: 100%; min-height: 46px; border: 1px solid #dcd7ca; border-radius: 3px; padding: 0 13px; background: rgba(255,253,247,.88); color: var(--ink); outline: none; transition: border .2s, box-shadow .2s, background .2s; font-size: 12px; }
+    .field input::placeholder { color: #9a9b91; }
+    .field input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(183,155,98,.14); background: #fffdf7; }
+    .password-wrap { position: relative; }
+    .password-wrap input { padding-right: 65px; }
+    .show-password { position: absolute; right: 9px; top: 50%; transform: translateY(-50%); border: 0; padding: 6px; color: var(--accent-dark); background: transparent; font-size: 9px; font-weight: 800; letter-spacing: .04em; }
+    .form-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: -2px; }
+    .check-label { display: flex; align-items: flex-start; gap: 8px; color: var(--muted); font-size: 10px; line-height: 1.6; }
+    .check-label input { accent-color: var(--ink); margin: 2px 0 0; flex: 0 0 auto; }
+    .inline-link { color: var(--accent-dark); font-weight: 800; font-size: 10px; }
+    .inline-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+    .submit-btn { width: 100%; min-height: 48px; display: flex; align-items: center; justify-content: center; gap: 10px; border: 1px solid var(--ink); border-radius: 3px; color: var(--white); background: var(--ink); font-size: 11px; font-weight: 800; letter-spacing: .05em; transition: transform .2s, background .2s, box-shadow .2s; margin-top: 2px; }
+    .submit-btn:hover { background: #35483e; box-shadow: 0 8px 20px rgba(31,51,43,.13); transform: translateY(-1px); }
+    .form-message { display: none; padding: 11px 12px; border-left: 3px solid var(--accent); background: #f0eadb; color: #445144; font-size: 10px; line-height: 1.7; }
+    .form-message.show { display: block; animation: messageIn .25s ease both; }
+    .auth-switch { border-top: 1px solid var(--line); margin: 23px 0 0; padding-top: 18px; text-align: center; color: var(--muted); font-size: 11px; }
+    .auth-note { margin: 17px 0 0; text-align: center; color: #8a8b80; font-size: 9px; line-height: 1.7; }
+    .back-home { display: inline-flex; align-items: center; gap: 8px; margin: 23px auto 0; color: var(--muted); font-size: 10px; font-weight: 700; }
+    .back-home:hover { color: var(--ink); }
+    .auth-foot { text-align: center; padding: 0 20px 22px; color: var(--muted); font-size: 9px; letter-spacing: .04em; }
+    @keyframes imageDrift { from { transform: scale(1); } to { transform: scale(1.045); } }
+    @keyframes messageIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 820px) { .auth-main { padding: 28px 18px 38px; } .auth-layout { grid-template-columns: 1fr; } .auth-visual { min-height: 290px; } .visual-copy { bottom: 25px; left: 26px; } .visual-copy h2 { font-size: 39px; max-width: 420px; } .visual-copy p { max-width: 460px; } .visual-stamp { width: 65px; height: 65px; top: 20px; left: 20px; font-size: 14px; } .auth-panel { padding: 32px clamp(22px,6vw,52px) 38px; max-width: 620px; width: 100%; justify-self: center; } }
+    @media (max-width: 480px) { .auth-nav { min-height: 68px; padding: 0 17px; } .logo-word { font-size: 27px; } .logo-sub { font-size: 7px; } .header-actions { gap: 11px; font-size: 10px; } .header-cta { min-height: 36px; padding: 0 10px; } .auth-main { padding: 18px 12px 28px; } .auth-visual { min-height: 245px; } .visual-copy { left: 20px; right: 17px; bottom: 19px; } .visual-copy h2 { font-size: 34px; } .visual-copy p { font-size: 10px; } .auth-panel { padding: 29px 20px 31px; } .auth-panel h1 { font-size: 43px; } .form-row { align-items: flex-start; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
+  </style>
+</head>
+<body>
+  <div class="announcement">DISCOVER MORE. <span>LOVE YOUR STYLE.</span> SHOP DIRECT WITH BRANDS.</div>
+  <header class="auth-header">
+    <div class="auth-nav">
+      <a class="brand-logo" href="index.html" aria-label="LEWEZZI home"><span class="logo-symbol">L</span><span><span class="logo-word">LEWEZZI</span><span class="logo-sub">one destination · many brands</span></span></a>
+      <div class="header-actions">
+        <a href="signup.html">Join LEWEZZI</a>
+        <a class="header-cta" href="index.html">Back to shop <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </header>
+  <main class="auth-main">
+    <div class="auth-layout">
+      <aside class="auth-visual" aria-label="Fashion editorial">
+        <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1400&q=85" alt="Fashion shoppers and contemporary clothing" />
+        <div class="visual-stamp">LEWEZZI<br /><span style="font-size:9px;letter-spacing:.1em">STYLE</span></div>
+        <div class="visual-copy"><span class="visual-eyebrow">A world of brands · one destination</span><h2>Your next favourite look is waiting.</h2><p>Pick up where you left off and discover new designs from brands around Sri Lanka.</p></div>
+      </aside>
+      <section class="auth-panel" aria-labelledby="authTitle">
+        <span class="auth-kicker">WELCOME BACK</span>
+        <h1 id="authTitle">Good to see you.</h1>
+        <p class="auth-intro">Sign in to continue discovering clothing from the brands you love.</p>
+        <form class="auth-form" id="authForm">
+          
+          <div class="field"><label for="email">EMAIL ADDRESS</label><input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required /></div>
+          <div class="field"><label for="password">PASSWORD</label><div class="password-wrap"><input id="password" name="password" type="password" placeholder="At least 8 characters" autocomplete="current-password" minlength="8" required /><button class="show-password" type="button" data-password-target="password" aria-label="Show password">SHOW</button></div></div>
+          <div class="form-row"><label class="check-label"><input id="rememberMe" type="checkbox" /><span>Remember me on this device</span></label><button id="forgotPassword" class="inline-link" type="button" style="border:0;background:transparent;padding:0;cursor:pointer">Forgot password?</button></div>
+          <div id="formMessage" class="form-message" role="status" aria-live="polite"></div>
+          <button class="submit-btn" type="submit">Log in <span aria-hidden="true">→</span></button>
+        </form>
+        <p class="auth-switch">New to LEWEZZI? <a class="inline-link" href="signup.html">Create an account</a></p>
+        <p class="auth-note" id="demo-notice">DEMO ACCOUNT PAGES · No real account is created. Never enter a real password into a demo.</p>
+        <div style="text-align:center"><a class="back-home" href="index.html"><span aria-hidden="true">←</span> Return to LEWEZZI homepage</a></div>
+      </section>
+    </div>
+  </main>
+  <footer class="auth-foot">© <span id="year"></span> LEWEZZI · Discover clothing, your way.</footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  
+  <script>
+    const form = document.getElementById('authForm');
+    const message = document.getElementById('formMessage');
+    document.querySelectorAll('[data-password-target]').forEach(button => {
+      button.addEventListener('click', () => {
+        const input = document.getElementById(button.dataset.passwordTarget);
+        const show = input.type === 'password';
+        input.type = show ? 'text' : 'password';
+        button.textContent = show ? 'HIDE' : 'SHOW';
+        button.setAttribute('aria-label', show ? 'Hide password' : 'Show password');
+      });
+    });
+    function showMessage(text) {
+      message.textContent = text;
+      message.classList.add('show');
+      message.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      showMessage('Your details passed the front-end form checks. Sign-in is not connected yet, so no account was authenticated. A secure backend is needed for real login.');
+    });
+    document.getElementById('forgotPassword').addEventListener('click', () => {
+      showMessage('Password reset is a demo-only placeholder. It needs a secure backend and email verification to work.');
+    });
+    
+  </script>
+
+</body>
+</html>
